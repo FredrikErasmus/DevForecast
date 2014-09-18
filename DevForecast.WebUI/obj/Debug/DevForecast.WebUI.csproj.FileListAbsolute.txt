@@ -29,3 +29,5 @@ D:\Projects\DevForecast\DevForecast.WebUI\bin\System.Web.Http.WebHost.xml
 D:\Projects\DevForecast\DevForecast.WebUI\obj\Debug\DevForecast.WebUI.csprojResolveAssemblyReference.cache
 D:\Projects\DevForecast\DevForecast.WebUI\obj\Debug\DevForecast.WebUI.dll
 D:\Projects\DevForecast\DevForecast.WebUI\obj\Debug\DevForecast.WebUI.pdb
+D:\Projects\DevForecast\DevForecast.WebUI\bin\DevForecast.Models.dll
+D:\Projects\DevForecast\DevForecast.WebUI\bin\DevForecast.Models.pdb
