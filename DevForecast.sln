@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevForecast.Models", "DevFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevForecast.Tests", "DevForecast.Tests\DevForecast.Tests.csproj", "{33439617-55BB-4B7D-8645-E5DF7DE9B28C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevForecast.WebUI", "DevForecast.WebUI\DevForecast.WebUI.csproj", "{08F484E1-E3A1-49C7-85F8-D76EA0E75BE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08F484E1-E3A1-49C7-85F8-D76EA0E75BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F484E1-E3A1-49C7-85F8-D76EA0E75BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F484E1-E3A1-49C7-85F8-D76EA0E75BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F484E1-E3A1-49C7-85F8-D76EA0E75BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
