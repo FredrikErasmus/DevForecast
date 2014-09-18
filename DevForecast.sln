@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevForecast.Models", "DevForecast.Models\DevForecast.Models.csproj", "{4EE7637F-F6F2-4EA0-8BBA-89C13D2498E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevForecast.Tests", "DevForecast.Tests\DevForecast.Tests.csproj", "{33439617-55BB-4B7D-8645-E5DF7DE9B28C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EE7637F-F6F2-4EA0-8BBA-89C13D2498E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE7637F-F6F2-4EA0-8BBA-89C13D2498E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE7637F-F6F2-4EA0-8BBA-89C13D2498E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE7637F-F6F2-4EA0-8BBA-89C13D2498E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33439617-55BB-4B7D-8645-E5DF7DE9B28C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
