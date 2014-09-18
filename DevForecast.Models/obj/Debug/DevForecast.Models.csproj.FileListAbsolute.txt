@@ -1,5 +1,0 @@
-D:\Projects\DevForecast\DevForecast.Models\bin\Debug\DevForecast.Models.dll
-D:\Projects\DevForecast\DevForecast.Models\bin\Debug\DevForecast.Models.pdb
-D:\Projects\DevForecast\DevForecast.Models\obj\Debug\DevForecast.Models.csprojResolveAssemblyReference.cache
-D:\Projects\DevForecast\DevForecast.Models\obj\Debug\DevForecast.Models.dll
-D:\Projects\DevForecast\DevForecast.Models\obj\Debug\DevForecast.Models.pdb

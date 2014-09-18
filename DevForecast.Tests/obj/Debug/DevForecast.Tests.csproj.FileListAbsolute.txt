@@ -1,7 +1,0 @@
-D:\Projects\DevForecast\DevForecast.Tests\bin\Debug\DevForecast.Tests.dll
-D:\Projects\DevForecast\DevForecast.Tests\bin\Debug\DevForecast.Tests.pdb
-D:\Projects\DevForecast\DevForecast.Tests\bin\Debug\DevForecast.Models.dll
-D:\Projects\DevForecast\DevForecast.Tests\bin\Debug\DevForecast.Models.pdb
-D:\Projects\DevForecast\DevForecast.Tests\obj\Debug\DevForecast.Tests.csprojResolveAssemblyReference.cache
-D:\Projects\DevForecast\DevForecast.Tests\obj\Debug\DevForecast.Tests.dll
-D:\Projects\DevForecast\DevForecast.Tests\obj\Debug\DevForecast.Tests.pdb
