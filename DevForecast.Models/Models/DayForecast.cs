@@ -11,9 +11,11 @@ namespace DevForecast.Models
         string dayOfTheWeek;
         string month;
         int year;
+        int dayOfTheMonth;
 
-        public string DayOfTheWeek { get; set; }
-        public string Month { get; set; }
-        public int Year { get; set; }
+        public string DayOfTheWeek { get { return dayOfTheWeek; } set { dayOfTheWeek = value; } }
+        public int DayOfTheMonth { get { return dayOfTheMonth; } set { dayOfTheMonth = value; } }
+        public string Month { get { return month; } set { month = value; } }
+        public int Year { get { return year; } set { year = value; } }
     }
 }

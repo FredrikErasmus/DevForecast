@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevForecast.Tests
@@ -30,6 +32,13 @@ namespace DevForecast.Tests
             DevForecast.Models.Services.DayForecastService dayForecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6));
             Assert.IsTrue(dayForecast.MonthDifference == 6);
             Assert.IsTrue(dayForecast.Duration.Days == dayForecast.DayForecastCollection.Count);
+        }
+        [TestMethod]
+        public void CheckWeek()
+        {
+            DevForecast.Models.Services.DayForecastService dayForecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6));
+            List<string> days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            CollectionAssert.AreEqual(dayForecast.WeekDayForecastCollection.First().Select(tv => tv.DayOfTheWeek).ToList(), days);  
         }
     }
 }

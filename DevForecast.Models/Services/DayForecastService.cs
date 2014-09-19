@@ -15,6 +15,7 @@ namespace DevForecast.Models.Services
         long _monthDifference;
         TimeSpan _duration;
         IList<DayForecast> _dayForecastCollection;
+        IList<List<DayForecast>> _weekDayForecastCollection;
         public DayForecastService(DateTime startDate, DateTime endDate)
         {
             _startDate = startDate;
@@ -35,13 +36,29 @@ namespace DevForecast.Models.Services
                 var inbetweenDtDaysInMonth = DateTime.DaysInMonth(inbetweenDt.Year, inbetweenDt.Month);
                 ProcessDayForecastCollection(inbetweenDtDaysInMonth, inbetweenDt, _dayForecastCollection);
             }
+            List<DayForecast> weekItem = new List<DayForecast>();
+            _weekDayForecastCollection = new List<List<DayForecast>>();
+            foreach(var df in _dayForecastCollection)
+            {
+                weekItem.Add(df);
+                if (df.DayOfTheWeek == "Sunday")
+                {
+                    _weekDayForecastCollection.Add(weekItem);
+                    weekItem = new List<DayForecast>();
+                }
+            }
         }
         private void ProcessDayForecastCollection(int daysInMonth, DateTime dateTimeItem, IList<DayForecast> dateTimeCollection)
         {
             for (var i = 1; i <= daysInMonth; i++)
             {
                 var dayForecastItem = new DateTime(dateTimeItem.Year, dateTimeItem.Month, i);
-                dateTimeCollection.Add(new DayForecast { DayOfTheWeek = dayForecastItem.ToString("dddd"), Month = dayForecastItem.ToString("MMMM"), Year = dayForecastItem.Year });
+                dateTimeCollection.Add(new DayForecast { 
+                    DayOfTheWeek = dayForecastItem.ToString("dddd"), 
+                    Month = dayForecastItem.ToString("MMMM"), 
+                    Year = dayForecastItem.Year, 
+                    DayOfTheMonth = dayForecastItem.Day
+                });
             }
         }
         public IList<DayForecast> DayForecastCollection { get { return _dayForecastCollection; } }
@@ -51,5 +68,6 @@ namespace DevForecast.Models.Services
         public long MonthDifference { get { return _monthDifference; } }
         public DateTime StartDate { get { return _startDate; } }
         public DateTime EndDate { get { return _endDate; } }
+        public IList<List<DayForecast>> WeekDayForecastCollection { get { return _weekDayForecastCollection; } }
     }
 }
