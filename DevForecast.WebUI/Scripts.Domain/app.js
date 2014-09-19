@@ -2,10 +2,11 @@
     var app = angular.module("DevForecast", []);
 
     var MainController = function ($scope, $http) {
-        onForecastsLoaded = function (data) {
-            console.log(data);
+        $scope.dayForecasts = [];
+        onForecastsLoaded = function (response) {
+            $scope.dayForecasts = response.data;
         };
-        $http.get("/api/main/dayforecasts").then(function (data) { onForecastsLoaded(data) });
+        $http.get("/api/main/dayforecasts").then(onForecastsLoaded);
     };
 
     app.controller("MainController", ["$scope", "$http", MainController]);

@@ -14,6 +14,8 @@ namespace DevForecast.WebUI.App_Start
                 .Include("~/Scripts/angular.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts.Domain/app.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/bootstrap").Include("~/Content/bootstrap.min.css", "~/Content/custom.css"));
         }
     }
 }
