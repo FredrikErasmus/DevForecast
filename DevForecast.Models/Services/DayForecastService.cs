@@ -17,6 +17,7 @@ namespace DevForecast.Models.Services
         IList<DayForecast> _dayForecastCollection;
         IList<List<DayForecast>> _weekDayForecastCollection;
         DayForecastConfiguration _dayForecastConfiguration;
+        IList<string> _week;
         public DayForecastService(DateTime startDate, DateTime endDate, DayForecastConfiguration dayForecastConfiguration)
         {
             _startDate = startDate;
@@ -48,6 +49,7 @@ namespace DevForecast.Models.Services
                     weekItem = new List<DayForecast>();
                 }
             }
+            _week = _dayForecastCollection.GroupBy(d => d.FullDayOfTheWeek).Select(gd => gd.Key).ToList();
         }
         private void ProcessDayForecastCollection(int daysInMonth, DateTime dateTimeItem, IList<DayForecast> dateTimeCollection)
         {
@@ -91,5 +93,6 @@ namespace DevForecast.Models.Services
         public DateTime EndDate { get { return _endDate; } }
         public IList<List<DayForecast>> WeekDayForecastCollection { get { return _weekDayForecastCollection; } }
         public DayForecastConfiguration DayForecastConfiguration { get { return _dayForecastConfiguration; } set { _dayForecastConfiguration = value; } }
+        public IList<string> Week { get { return _week; } }
     }
 }

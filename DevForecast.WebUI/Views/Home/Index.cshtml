@@ -3,17 +3,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div ng-controller="MainController" class="container">
+    <div class="row affix-top">
+        <div ng-repeat="day in week" class="col-sm-2 col-xs-4">
+            <div style="padding-left:20px">{{day}}</div>
+        </div>
+    </div>
     <div ng-repeat="weekForecast in weekForecasts" class="games-schedule-items">
         <div class="row">
-            <div ng-repeat="dayForecast in weekForecast" class="col-sm-2 col-xs-4">
+            <div ng-repeat="dayForecast in weekForecast" class="col-sm-2 col-xs-4" style="border-top:1px solid #d3d3d3">
                 <div class="tile tile9">
                     <div class="carousel slide" data-ride="carousel">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active" style="height:165px;width:165px;padding-left:20px">
-                                <h1>{{dayForecast.DayOfTheMonth}}</h1>
-                                <p>{{dayForecast.FullDayOfTheWeek}}</p>
-                                <p> {{dayForecast.FullMonth}}</p>
+                            <div class="item active" style="width:165px;padding:20px">
+                                <div>
+                                    <h1>{{dayForecast.DayOfTheMonth}}</h1>
+                                    <p> {{dayForecast.FullMonth}}</p>
+                                </div>
+                                <div class="circle">
+                                    PM
+                                </div>
                             </div>
                         </div>
                     </div>

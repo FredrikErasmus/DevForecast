@@ -44,12 +44,13 @@ namespace DevForecast.Tests
             Assert.IsTrue(dayForecast.MonthDifference == 6);
         }
         [TestMethod]
-        public void CheckWeek()
+        public void CheckWeekForCorrectDays()
         {
             dayForecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6), configuration);
             List<string> days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
             var daysToCompare = dayForecast.WeekDayForecastCollection.First().Select(tv => tv.FullDayOfTheWeek).ToList();
             CollectionAssert.AreEqual(daysToCompare, days);  
+
         }
         [TestMethod]
         public void CheckShortDay()
@@ -79,6 +80,13 @@ namespace DevForecast.Tests
             Assert.AreEqual(configuration.DefaultHoursInDay, singleDay.TotalHours);
             Assert.AreEqual(configuration.DefaultHoursInDay * 60, singleDay.TotalMinutes);
             Assert.AreEqual((configuration.DefaultHoursInDay * 60) * 60, singleDay.TotalSeconds);
+        }
+        [TestMethod]
+        public void CheckWeekSingularDays()
+        {
+            //need an array of days that only repeats once, sort of like column headings
+            dayForecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6), configuration);
+            Assert.IsTrue(dayForecast.Week.Any());
         }
     }
 }
