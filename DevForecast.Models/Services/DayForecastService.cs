@@ -13,13 +13,15 @@ namespace DevForecast.Models.Services
         int _startDateDaysInMonth;
         int _endDateDaysInMonth;
         long _monthDifference;
-        TimeSpan _duration;
+        int _totalDays;
         IList<DayForecast> _dayForecastCollection;
         IList<List<DayForecast>> _weekDayForecastCollection;
-        public DayForecastService(DateTime startDate, DateTime endDate)
+        DayForecastConfiguration _dayForecastConfiguration;
+        public DayForecastService(DateTime startDate, DateTime endDate, DayForecastConfiguration dayForecastConfiguration)
         {
             _startDate = startDate;
             _endDate = endDate;
+            _dayForecastConfiguration = dayForecastConfiguration;
             GenerateDateRangeCollection();
         }
         private void GenerateDateRangeCollection()
@@ -27,7 +29,6 @@ namespace DevForecast.Models.Services
             _dayForecastCollection = new List<DayForecast>();
             _startDateDaysInMonth = DateTime.DaysInMonth(_startDate.Year, _startDate.Month);
             _endDateDaysInMonth = DateTime.DaysInMonth(_endDate.Year, _endDate.Month);
-            _duration = _endDate - _startDate;
             _monthDifference = Microsoft.VisualBasic.DateAndTime.DateDiff(Microsoft.VisualBasic.DateInterval.Month, _startDate, _endDate);
             ProcessDayForecastCollection(_startDateDaysInMonth, _startDate, _dayForecastCollection);
             for (int i = 1; i < _monthDifference; i++)
@@ -41,7 +42,7 @@ namespace DevForecast.Models.Services
             foreach(var df in _dayForecastCollection)
             {
                 weekItem.Add(df);
-                if (df.DayOfTheWeek == "Sunday")
+                if (df.FullDayOfTheWeek == _dayForecastConfiguration.DayEndOfWeek)
                 {
                     _weekDayForecastCollection.Add(weekItem);
                     weekItem = new List<DayForecast>();
@@ -52,22 +53,43 @@ namespace DevForecast.Models.Services
         {
             for (var i = 1; i <= daysInMonth; i++)
             {
+                bool canAddDay = true;
                 var dayForecastItem = new DateTime(dateTimeItem.Year, dateTimeItem.Month, i);
-                dateTimeCollection.Add(new DayForecast { 
-                    DayOfTheWeek = dayForecastItem.ToString("dddd"), 
-                    Month = dayForecastItem.ToString("MMMM"), 
-                    Year = dayForecastItem.Year, 
-                    DayOfTheMonth = dayForecastItem.Day
-                });
+                if (_dayForecastConfiguration != null)
+                {
+                    if(_dayForecastConfiguration.WeekDaysToExclude != null)
+                    {
+                        string day = dayForecastItem.ToString("dddd");
+                        if (_dayForecastConfiguration.WeekDaysToExclude.Contains(day))
+                            canAddDay = false;
+                    }
+                }
+                if (canAddDay)
+                {
+                    _totalDays++;
+                    dateTimeCollection.Add(new DayForecast
+                    {
+                        FullDayOfTheWeek = dayForecastItem.ToString("dddd"),
+                        FullMonth = dayForecastItem.ToString("MMMM"),
+                        Year = dayForecastItem.Year,
+                        DayOfTheMonth = dayForecastItem.Day,
+                        ShortDayOfTheWeek = dayForecastItem.ToString("ddd"),
+                        ShortMonth = dayForecastItem.ToString("MMM"),
+                        TotalHours = _dayForecastConfiguration.DefaultHoursInDay,
+                        TotalMinutes = _dayForecastConfiguration.DefaultHoursInDay * 60,
+                        TotalSeconds = (_dayForecastConfiguration.DefaultHoursInDay * 60) * 60
+                    });
+                }
             }
         }
         public IList<DayForecast> DayForecastCollection { get { return _dayForecastCollection; } }
         public int StartDaysInMonth { get { return _startDateDaysInMonth; } }
         public int EndDaysInMonth { get { return _endDateDaysInMonth; } }
-        public TimeSpan Duration { get { return _duration; } }
+        public int TotalDays { get { return _totalDays; } }
         public long MonthDifference { get { return _monthDifference; } }
         public DateTime StartDate { get { return _startDate; } }
         public DateTime EndDate { get { return _endDate; } }
         public IList<List<DayForecast>> WeekDayForecastCollection { get { return _weekDayForecastCollection; } }
+        public DayForecastConfiguration DayForecastConfiguration { get { return _dayForecastConfiguration; } set { _dayForecastConfiguration = value; } }
     }
 }

@@ -8,14 +8,24 @@ namespace DevForecast.Models
 {
     public class DayForecast
     {
-        string dayOfTheWeek;
-        string month;
+        string fullDayOfTheWeek;
+        string shortDayOfTheWeek;
+        string fullMonth;
+        string shortMonth;
         int year;
         int dayOfTheMonth;
+        int totalHours;
+        int totalminutes;
+        int totalSeconds;
 
-        public string DayOfTheWeek { get { return dayOfTheWeek; } set { dayOfTheWeek = value; } }
+        public string FullDayOfTheWeek { get { return fullDayOfTheWeek; } set { fullDayOfTheWeek = value; } }
+        public string ShortDayOfTheWeek { get { return shortDayOfTheWeek; } set { shortDayOfTheWeek = value; } }
         public int DayOfTheMonth { get { return dayOfTheMonth; } set { dayOfTheMonth = value; } }
-        public string Month { get { return month; } set { month = value; } }
+        public string FullMonth { get { return fullMonth; } set { fullMonth = value; } }
+        public string ShortMonth { get { return shortMonth; } set { shortMonth = value; } }
         public int Year { get { return year; } set { year = value; } }
+        public int TotalHours { get { return totalHours; } set { totalHours = value; } }
+        public int TotalMinutes { get { return totalminutes; } set { totalminutes = value; } }
+        public int TotalSeconds { get { return totalSeconds; } set { totalSeconds = value; } }
     }
 }

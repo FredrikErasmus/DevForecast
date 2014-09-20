@@ -12,7 +12,14 @@ namespace DevForecast.WebUI.Controllers
         DevForecast.Models.Services.DayForecastService dayforecast;
         public IEnumerable<IEnumerable<DevForecast.Models.DayForecast>> GetWeekDayForecasts()
         {
-            dayforecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6));
+            dayforecast = new Models.Services.DayForecastService(DateTime.Now, DateTime.Now.AddMonths(6),
+                                new Models.DayForecastConfiguration
+                                {
+                                    DayEndOfWeek = "Friday",
+                                    DayStartOfWeek = "Monday",
+                                    DefaultHoursInDay = 8,
+                                    WeekDaysToExclude = new List<string> { "Saturday", "Sunday" }
+                                });
             return dayforecast.WeekDayForecastCollection;
         }
     }
