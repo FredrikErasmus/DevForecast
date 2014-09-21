@@ -71,6 +71,9 @@
 	border-style: solid;
 }
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.popupContainer{
+    overflow-y:visible;
+ }
 
 
 
