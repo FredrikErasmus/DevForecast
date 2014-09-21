@@ -11,7 +11,7 @@ namespace DevForecast.WebUI.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/angular")
-                .Include("~/Scripts/angular.min.js"));
+                .Include("~/Scripts/angular.min.js", "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts.Domain/app.js"));
 

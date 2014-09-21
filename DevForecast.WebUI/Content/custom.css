@@ -70,6 +70,7 @@
     	border-color: red;
 	border-style: solid;
 }
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 
 

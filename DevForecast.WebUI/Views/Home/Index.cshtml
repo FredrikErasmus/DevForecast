@@ -4,13 +4,13 @@
 }
 <div ng-controller="MainController" class="container">
     <div class="row affix-top">
-        <div ng-repeat="day in week" class="col-sm-2 col-xs-4">
+        <div ng-repeat="day in week" class="col-sm-2 col-xs-4" style="text-align:center">
             <div style="padding-left:20px">{{day}}</div>
         </div>
     </div>
     <div ng-repeat="weekForecast in weekForecasts" class="games-schedule-items">
         <div class="row">
-            <div ng-repeat="dayForecast in weekForecast" class="col-sm-2 col-xs-4" style="border-top:1px solid #d3d3d3">
+            <div ng-repeat="dayForecast in weekForecast" class="col-sm-2 col-xs-4" style="border-top:1px solid #d3d3d3;text-align:center">
                 <div class="tile tile9">
                     <div class="carousel slide" data-ride="carousel">
                         <!-- Wrapper for slides -->
@@ -20,8 +20,8 @@
                                     <h1>{{dayForecast.DayOfTheMonth}}</h1>
                                     <p> {{dayForecast.FullMonth}}</p>
                                 </div>
-                                <div class="circle">
-                                    PM
+                                <div style="padding:0">
+                                    <button popover-placement="right" popover="On the Top!" class="btn btn-default circle">Top</button>
                                 </div>
                             </div>
                         </div>
