@@ -1,5 +1,9 @@
-﻿using System;
+﻿using DevForecast.Models;
+using DevForecast.Models.Repository;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,7 +23,7 @@ namespace DevForecast.WebUI.Controllers
                     DayStartOfWeek = "Monday",
                     DefaultHoursInDay = 8,
                     WeekDaysToExclude = new List<string> { "Saturday", "Sunday" }
-                });
+                }, new DapperRepository<DayForecast>(new SqlConnection(ConfigurationManager.ConnectionStrings["DevForecast"].ConnectionString)));
             return dayforecast.DayForecastCollection.AsEnumerable();
         }
     }

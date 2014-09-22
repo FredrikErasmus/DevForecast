@@ -1,5 +1,9 @@
-﻿using System;
+﻿using DevForecast.Models.Interfaces;
+using DevForecast.Models.Repository;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +21,14 @@ namespace DevForecast.Models.Services
         IList<DayForecast> _dayForecastCollection;
         IList<List<DayForecast>> _weekDayForecastCollection;
         DayForecastConfiguration _dayForecastConfiguration;
+        IDapperRepository<DayForecast> _dapperRepository;
         IList<string> _week;
-        public DayForecastService(DateTime startDate, DateTime endDate, DayForecastConfiguration dayForecastConfiguration)
+        public DayForecastService(DateTime startDate, DateTime endDate, DayForecastConfiguration dayForecastConfiguration, IDapperRepository<DayForecast> dapperRepository)
         {
             _startDate = startDate;
             _endDate = endDate;
             _dayForecastConfiguration = dayForecastConfiguration;
+            _dapperRepository = dapperRepository;
             GenerateDateRangeCollection();
         }
         private void GenerateDateRangeCollection()
@@ -94,5 +100,6 @@ namespace DevForecast.Models.Services
         public IList<List<DayForecast>> WeekDayForecastCollection { get { return _weekDayForecastCollection; } }
         public DayForecastConfiguration DayForecastConfiguration { get { return _dayForecastConfiguration; } set { _dayForecastConfiguration = value; } }
         public IList<string> Week { get { return _week; } }
+        public IDapperRepository<DayForecast> DapperRepository { get { return _dapperRepository; } }
     }
 }
