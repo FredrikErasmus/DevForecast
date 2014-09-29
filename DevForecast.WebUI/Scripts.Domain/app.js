@@ -1,47 +1,47 @@
 ﻿(function () {
-    var app = angular.module("DevForecast", ['ui.bootstrap']);
+    var app = angular.module("DevForecast", ['ngResource', 'DevForecast.Services', 'ui.bootstrap']);
 
-    var MainController = function ($scope, $http) {
+    var MainController = function ($scope, $http, $resource, Scheduler, TimeSheet) {
         $scope.dayForecasts = [];
         $scope.weekForecasts = [];
         $scope.week = [];
-        $scope.counter = 0
-        onForecastsLoaded = function (response) {
-            $scope.dayForecasts = response.data;
-            $scope.counter = $scope.dayForecasts.length / 5;
+        $scope.counter = 0;
+        $scope.uploadStatus = '';
+        $scope.onWeekForecastsLoaded = function (response) {
+            $scope.weekForecasts = response;
         };
-        onWeekForecastsLoaded = function (response) {
-            $scope.weekForecasts = response.data;
+        $scope.getWeekDayForecasts = function () {
+            Scheduler.getWeekDayForecasts().$promise.then($scope.onWeekForecastsLoaded);
         };
-        onWeekLoaded = function (response) {
-            $scope.week = response.data;
+        $scope.upload = function () {
+            var fd = new FormData();
+            for (var i = 0; i < document.getElementById('files').files.length; i++) {
+                fd.append("files", document.getElementById('files').files[i]);
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", uploadComplete, false);
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+            xhr.open("POST", "api/timesheet/postfile");
+            xhr.send(fd);            
         };
-        $scope.getData = function () {
-            $http.get("/api/dayforecast/dayforecasts").then(onForecastsLoaded);
-            $http.get("/api/weekdayforecast/weekdayforecasts").then(onWeekForecastsLoaded);
-            $http.get("/api/week/week").then(onWeekLoaded);
-        };
-        $scope.add = function () {
-            
-        };
-        $scope.getData();
+        $scope.getWeekDayForecasts();
     };
-
-    var AlertDemoController = function ($scope) {
-        $scope.alerts = [
-          { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-          { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-        ];
-
-        $scope.addAlert = function () {
-            $scope.alerts.push({ msg: 'Another alert!' });
-        };
-
-        $scope.closeAlert = function (index) {
-            $scope.alerts.splice(index, 1);
-        };
-    };
-    app.controller("AlertDemoController", ["$scope", AlertDemoController]);
-    app.controller("MainController", ["$scope", "$http", MainController]);
-
+    app.controller("MainController", ["$scope", "$http", '$resource', 'Scheduler', 'TimeSheet', MainController]);
 }());
+
+function uploadComplete(evt) {
+    /* This event is raised when the server send back a response */
+    //alert(evt.target.responseText);
+    console.log(evt.target.responseText);
+};
+function uploadProgress(evt) {
+    if (evt.lengthComputable) {
+        var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+        //document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+        console.log(percentComplete);
+    }
+    else {
+        //document.getElementById('progressNumber').innerHTML = 'unable to compute';
+        console.log('unable to compute');
+    }
+}

@@ -108,6 +108,7 @@
     <Content Include="Content\custom.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts.Domain\app.js" />
+    <Content Include="Scripts.Domain\services.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -867,8 +868,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DayForecastController.cs" />
+    <Compile Include="Controllers\TimeSheetController.cs" />
     <Compile Include="Controllers\WeekController.cs" />
     <Compile Include="Controllers\WeekDayForecastController.cs" />
     <Compile Include="Global.asax.cs">
@@ -902,6 +905,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Dump\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
