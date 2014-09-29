@@ -21,6 +21,9 @@
             $http.get("/api/weekdayforecast/weekdayforecasts").then(onWeekForecastsLoaded);
             $http.get("/api/week/week").then(onWeekLoaded);
         };
+        $scope.add = function () {
+            
+        };
         $scope.getData();
     };
 

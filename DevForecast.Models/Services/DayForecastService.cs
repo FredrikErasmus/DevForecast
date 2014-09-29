@@ -90,6 +90,10 @@ namespace DevForecast.Models.Services
                 }
             }
         }
+        public void Get()
+        {
+            _dapperRepository.Get("");
+        }
         public IList<DayForecast> DayForecastCollection { get { return _dayForecastCollection; } }
         public int StartDaysInMonth { get { return _startDateDaysInMonth; } }
         public int EndDaysInMonth { get { return _endDateDaysInMonth; } }
@@ -100,6 +104,5 @@ namespace DevForecast.Models.Services
         public IList<List<DayForecast>> WeekDayForecastCollection { get { return _weekDayForecastCollection; } }
         public DayForecastConfiguration DayForecastConfiguration { get { return _dayForecastConfiguration; } set { _dayForecastConfiguration = value; } }
         public IList<string> Week { get { return _week; } }
-        public IDapperRepository<DayForecast> DapperRepository { get { return _dapperRepository; } }
     }
 }

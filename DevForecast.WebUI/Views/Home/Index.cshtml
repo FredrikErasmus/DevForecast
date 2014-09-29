@@ -3,6 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div ng-controller="MainController" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="file" id="file" name="file" />
+            <button ng-click="add()">Add</button>
+        </div>
+    </div>
     <div class="row affix-top">
         <div ng-repeat="day in week" class="col-sm-2 col-xs-4" style="text-align:center">
             <div style="padding-left:20px">{{day}}</div>
