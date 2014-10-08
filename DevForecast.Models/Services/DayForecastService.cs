@@ -56,6 +56,7 @@ namespace DevForecast.Models.Services
                 }
             }
             _week = _dayForecastCollection.GroupBy(d => d.FullDayOfTheWeek).Select(gd => gd.Key).ToList();
+            //here
         }
         private void ProcessDayForecastCollection(int daysInMonth, DateTime dateTimeItem, IList<DayForecast> dateTimeCollection)
         {
